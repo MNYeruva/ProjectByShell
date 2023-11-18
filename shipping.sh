@@ -31,6 +31,8 @@ yum install maven -y &>> $LOGFILE
 VALIDATE $? "Installing Maven"
 
 useradd roboshop &>> $LOGFILE
+VALIDATE $? "Adding roboshop user"
+
 mkdir /app &>> $LOGFILE
 VALIDATE $? "Creating app directory"
 
@@ -38,11 +40,10 @@ curl -L -o /tmp/shipping.zip https://roboshop-builds.s3.amazonaws.com/shipping.z
 VALIDATE $? "Downloading Shipping artifacts"
 
 cd /app
+VALIDATE $? "Moving to app directory"
 unzip /tmp/shipping.zip &>> $LOGFILE
 VALIDATE $? "Unzipping artifacts of shipping"
 
-cd /app
-VALIDATE $? "Moving to app directory"
 mvn clean package &>> $LOGFILE
 VALIDATE $? "Packaging shipping app"
 mv target/shipping-1.0.jar shipping.jar &>> $LOGFILE
