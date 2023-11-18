@@ -30,8 +30,9 @@ VALIDATE(){
 yum install maven -y &>> $LOGFILE
 VALIDATE $? "Installing Maven"
 
-useradd roboshop $LOGFILE
-mkdir /app $LOGFILE
+useradd roboshop &>> $LOGFILE
+mkdir /app &>> $LOGFILE
+VALIDATE $? "Creating app directory"
 
 curl -L -o /tmp/shipping.zip https://roboshop-builds.s3.amazonaws.com/shipping.zip &>> $LOGFILE
 VALIDATE $? "Downloading Shipping artifacts"
