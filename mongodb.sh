@@ -30,7 +30,7 @@ VALIDATE(){
 cp mongo.repo /etc/yum.repos.d/mongo.repo &>> $LOGFILE
 VALIDATE $? "Copied MongoDB repo into yum.repos.d"
 
-yum install mondodb-org -y &>> $LOGFILE
+sudo yum install mondodb-org -y &>> $LOGFILE
 VALIDATE $? "installation of MongoDB"
 
 systemctl enable mongod &>> $LOGFILE
