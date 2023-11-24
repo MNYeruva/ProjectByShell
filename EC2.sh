@@ -33,3 +33,6 @@ do
     }}]
     }'
 done
+
+# check instance is already created or not
+# update route 53 records
